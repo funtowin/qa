@@ -8,10 +8,10 @@ import (
 
 // GORMBase struct
 type GORMBase struct {
-	ID        uint64
-	CreatedAt string
-	UpdatedAt string
-	DeletedAt *string `sql:"index"`
+	ID        uint64  `json:"-"`
+	CreatedAt string  `json:"-"`
+	UpdatedAt string  `json:"-"`
+	DeletedAt *string `sql:"index" json:"-"`
 }
 
 // BeforeCreate func

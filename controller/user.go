@@ -37,6 +37,7 @@ func RegisterValidate(c *gin.Context) {
 //用户注册
 func Register(c *gin.Context) {
 	var u model.User
+	var p model.Profile
 
 	if err := c.ShouldBind(&u); err != nil {
 		c.JSON(http.StatusOK, gin.H{
@@ -47,10 +48,21 @@ func Register(c *gin.Context) {
 	}
 
 	code := u.Create()
+	if code != util.CodeSuccess{
+		c.JSON(http.StatusOK, gin.H{
+			"code":    code,
+			"message": code.Msg(),
+		})
+		return
+	}
+
+	p.UserID=u.ID
+	code = p.Create()
 	c.JSON(http.StatusOK, gin.H{
 		"code":    code,
 		"message": code.Msg(),
 	})
+
 }
 
 //用户登录
@@ -72,13 +84,21 @@ func Login(c *gin.Context) {
 
 	if code == util.CodeSuccess {
 		token, code = middleware.SetToken(u.Username)
+	}else{
+		c.JSON(http.StatusOK, gin.H{
+			"code":    code,
+			"message": code.Msg(),
+		})
+		return
 	}
+
+	var p model.Profile
+	p,code=model.GetByUserID(user.ID)
+
 	c.JSON(http.StatusOK, gin.H{
 		"code":    code,
 		"message": code.Msg(),
 		"token":   token,
-		"data": gin.H{
-			"userId": user.ID,
-		},
+		"data": p,
 	})
 }

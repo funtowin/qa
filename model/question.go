@@ -10,7 +10,7 @@ type Question struct {
 	GORMBase
 	Title   string `json:"title" gorm:"type:varchar(500)"`
 	Content string `json:"content" gorm:"type:varchar(2000)"`
-	UserID  uint   `json:"userId,string"`
+	UserID  uint64 `json:"userId,string"`
 }
 
 // 创建问题

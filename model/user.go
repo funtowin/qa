@@ -2,7 +2,6 @@ package model
 
 import (
 	"encoding/base64"
-	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/scrypt"
 	"log"
 	"qa/dao"
@@ -34,7 +33,7 @@ func (u *User) Create() util.MyCode {
 }
 
 // 密码加密
-func (u *User) BeforeSave(_ *gorm.DB) (err error) {
+func (u *User) BeforeSave() (err error) {
 	u.Password = ScryptPw(u.Password)
 	return nil
 }
@@ -54,7 +53,7 @@ func ScryptPw(password string) string {
 
 // 登录验证
 func (u *User) CheckLogin() (user User, code util.MyCode) {
-	err := dao.DB.Where("username = ?", u.Username).First(&user)
+	err := dao.DB.Where("username = ?", u.Username).First(&user).Error
 
 	if err != nil {
 		code = util.UserNotExist
