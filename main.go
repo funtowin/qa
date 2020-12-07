@@ -6,7 +6,7 @@ import (
 	"qa/config"
 	"qa/dao"
 	"qa/router"
-	util "qa/utils"
+	util "qa/util"
 )
 
 func main() {

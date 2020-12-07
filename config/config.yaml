@@ -4,7 +4,7 @@ db:
   addr: root:root@tcp(127.0.0.1:3306)/qasystem?charset=utf8mb4&parseTime=True&loc=Local
 
 # jwt认证密钥
-jwtKey: salt20201031
+jwtKey: salt20201206
 
 # 端口
-address: :8080
+address: :9090

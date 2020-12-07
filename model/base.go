@@ -2,7 +2,7 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
-	util "qa/utils"
+	util "qa/util"
 	"time"
 )
 

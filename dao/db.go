@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 // 连接数据库
-func Init()(err error){
+func Init() (err error) {
 
 	DB, err = gorm.Open(config.Conf.DB.Driver, config.Conf.DB.Addr)
 	DB.LogMode(true)

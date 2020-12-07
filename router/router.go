@@ -12,7 +12,6 @@ func Init() (r *gin.Engine) {
 
 	user := r.Group("/user")
 	{
-		// User
 		user.GET("/validate", controller.RegisterValidate)
 		user.POST("/register", controller.Register)
 		user.POST("/login", controller.Login)

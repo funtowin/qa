@@ -6,7 +6,7 @@ import (
 	"golang.org/x/crypto/scrypt"
 	"log"
 	"qa/dao"
-	"qa/utils"
+	"qa/util"
 )
 
 type User struct {

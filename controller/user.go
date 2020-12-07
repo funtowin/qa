@@ -1,12 +1,11 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"qa/middleware"
 	"qa/model"
-	"qa/utils"
+	"qa/util"
 )
 
 //用户注册检验
@@ -47,7 +46,6 @@ func Register(c *gin.Context) {
 		return
 	}
 
-
 	code := u.Create()
 	c.JSON(http.StatusOK, gin.H{
 		"code":    code,
@@ -67,14 +65,10 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	fmt.Printf("%#v",u)
-
 	var token string
 	var code util.MyCode
 	var user model.User
 	user, code = u.CheckLogin()
-
-
 
 	if code == util.CodeSuccess {
 		token, code = middleware.SetToken(u.Username)

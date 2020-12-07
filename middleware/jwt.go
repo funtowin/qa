@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"qa/config"
-	"qa/utils"
+	"qa/util"
 	"strings"
 	"time"
 )
@@ -82,7 +82,7 @@ func JwtToken() gin.HandlerFunc {
 		}
 		checkToken := strings.Split(tokenHeader, " ")
 		if len(checkToken) == 0 {
-			code =  util.UserTokenWrong
+			code = util.UserTokenWrong
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": code.Msg(),
@@ -92,7 +92,7 @@ func JwtToken() gin.HandlerFunc {
 		}
 
 		if len(checkToken) != 2 && checkToken[0] != "Bearer" {
-			code =  util.UserTokenWrong
+			code = util.UserTokenWrong
 			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": code.Msg(),

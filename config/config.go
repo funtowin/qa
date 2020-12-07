@@ -16,8 +16,8 @@ type Configuration struct {
 
 var Conf = new(Configuration)
 
-// Config 加载配置信息
-func Init()(err error){
+// 加载配置信息
+func Init() (err error) {
 	viper.SetConfigName("config")
 	viper.AddConfigPath("./config")
 	viper.SetConfigType("yaml")
@@ -30,4 +30,3 @@ func Init()(err error){
 	}
 	return
 }
-

@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"qa/model"
-	util "qa/utils"
+	util "qa/util"
 	"strconv"
 )
 
@@ -27,7 +27,7 @@ func AddQuestion(c *gin.Context) {
 	})
 }
 
-//  查询分类下的所有文章
+// 查询所有问题
 func GetAllQuestion(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
