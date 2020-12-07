@@ -23,6 +23,7 @@ func (q *Question) Create() util.MyCode {
 
 // 查询所有问题
 func GetAllQuestion(pageSize int, pageNum int) (questionList []Question, total int64, code util.MyCode) {
+
 	err := dao.DB.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&questionList).Count(&total).Error
 	if err != nil {
 		code = util.QuestionDataBaseError
