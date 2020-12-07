@@ -1,4 +1,4 @@
-# Go-QAsystem [![Go]("https://img.shields.io/badge/language-Go-00ADD8.svg")](https://github.com/golang/go)
+# Go-QAsystem [![Go](https://img.shields.io/badge/language-Go-00ADD8.svg)](https://github.com/golang/go)
 
 ## 设计目标
 
@@ -38,15 +38,21 @@
 
 ## 安装部署
 
-`git clone https://github.com/funtowin/qa.git`
+```shell
+git clone https://github.com/funtowin/qa.git
+```
 
 本项目使用`go module`管理依赖包，运行项目前请先安装依赖
 
-`go mod tidy`
+```shell
+go mod tidy
+```
 
 如遇下载过慢，请先运行如下命令
 
-`go env -w GOPROXY=https://goproxy.cn,direct`
+```shell
+go env -w GOPROXY=https://goproxy.cn,direct
+```
 
 ## 使用方法
 
@@ -69,11 +75,15 @@ address: :9090
 
 2. 初次使用需初始化数据库
 
-`go run ./ -initDB`
+```shell
+go run ./ -initDB
+```
 
 3. 之后使用可直接
 
-`go run ./`
+```shell
+go run ./
+```
 
 ## 效果图
 
